@@ -6,12 +6,19 @@ level = st.session_state.current_level
 
 if level < len(st.secrets["questions"]):
     st.title(f"Level {level}")
-    if (st.text_input(st.secrets["questions"][level]).lower() == st.secrets["answers"][level]):
+    attempt = st.text_input(st.secrets["questions"][level]).lower()
+    if (attempt == st.secrets["answers"][level]):
         st.session_state.current_level += 1
         st.rerun()
+    elif attempt:
+        st.write("No...")
+
 else:
     st.title(f"Final level")
     st.write(f"Do you remember your previous answers?")
     st.write(", ".join(str(x) for x in st.secrets["numbers"]) + ".")
-    if st.text_input("Final answer?").replace(" ", "").lower() == st.secrets["final"]:
+    attempt = st.text_input("Final answer?").replace(" ", "").lower()
+    if attempt == st.secrets["final"]:
         st.write("OK!")
+    elif attempt:
+        st.write("No...")
