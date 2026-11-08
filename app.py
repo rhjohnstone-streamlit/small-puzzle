@@ -1,5 +1,7 @@
 import streamlit as st
 
+st.set_page_config(page_title="Ross's Small Puzzle")
+
 if "current_level" not in st.session_state:
     st.session_state.current_level = 0
 level = st.session_state.current_level
