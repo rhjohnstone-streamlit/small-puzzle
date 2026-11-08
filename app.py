@@ -6,7 +6,7 @@ level = st.session_state.current_level
 
 if level < len(st.secrets["questions"]):
     st.title(f"Level {level}")
-    attempt = st.text_input(st.secrets["questions"][level]).lower()
+    attempt = st.text_input(st.secrets["questions"][level]).strip().lower()
     if (attempt == st.secrets["answers"][level]):
         st.session_state.current_level += 1
         st.rerun()
